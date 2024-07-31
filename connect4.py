@@ -16,7 +16,20 @@ class Connect4:
                     print(self.grid[row][column])
                 else:
                     print(self.grid[row][column], end="")
+        print("\n")
+    
+    def placeCounter(self, playedColumn):
+        for row in reversed(range(self.rows)):
+            if self.grid[row][playedColumn] == 0:
+                self.grid[row][playedColumn] = 1
+                return
+            
+        print("Sorry, no numbers below zero")
+        return
 
 if __name__ == "__main__":
     game = Connect4(3,3)
-    game.render()
+    while True:
+        playerInput = input('Place a counter: ')
+        game.placeCounter(int(playerInput))
+        game.render()
